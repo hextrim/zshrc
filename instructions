@@ -1,0 +1,99 @@
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+https://github.com/zsh-users/zsh-completions
+https://github.com/zsh-users/zsh-autosuggestions
+https://github.com/zsh-users/zsh-syntax-highlighting
+
+brew install zsh-completions
+To activate these completions, add the following to your .zshrc:
+
+  fpath=(/usr/local/share/zsh-completions $fpath)
+
+You may also need to force rebuild `zcompdump`:
+
+  rm -f ~/.zcompdump; compinit
+
+Additionally, if you receive "zsh compinit: insecure directories" warnings when attempting
+to load these completions, you may need to run this:
+
+  chmod go-w '/usr/local/share'
+
+  brew install zsh-autosuggestions
+  To activate the autosuggestions, add the following at the end of your .zshrc:
+
+  source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+You will also need to force reload of your .zshrc:
+
+  source ~/.zshrc
+
+  brew install zsh-syntax-highlighting
+  To activate the syntax highlighting, add the following at the end of your .zshrc:
+  source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+If you receive "highlighters directory not found" error message,
+you may need to add the following to your .zshenv:
+  export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters
+
+https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Meslo/M-DZ/Regular/complete/Meslo%20LG%20M%20DZ%20Regular%20Nerd%20Font%20Complete.ttf
+
+brew install python
+pip3 install --user powerline-status
+pip3 show powerline-status
+
+
+
+git clone https://github.com/powerline/fonts.git
+cd fonts ; ./install.sh ; cd ..
+rm -rf fonts
+
+brew install tmux
+ncurses is keg-only, which means it was not symlinked into /usr/local,
+because macOS already provides this software and installing another version in
+parallel can cause all kinds of trouble.
+
+If you need to have ncurses first in your PATH run:
+  echo 'export PATH="/usr/local/opt/ncurses/bin:$PATH"' >> ~/.zshrc
+
+For compilers to find ncurses you may need to set:
+  export LDFLAGS="-L/usr/local/opt/ncurses/lib"
+  export CPPFLAGS="-I/usr/local/opt/ncurses/include"
+
+==> tmux
+Example configuration has been installedn to:
+  /usr/local/opt/tmux/share/tmux
+
+Bash completion has been installed to:
+  /usr/local/etc/bash_completion.d
+
+https://github.com/jimeh/tmux-themepack
+git clone https://github.com/jimeh/tmux-themepack.git ~/.tmux-themepack\n
+cd .tmux-themepack
+
+
+curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"\n
+sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
+export AWS_CREDS_DEV=dASDAaddAASDASDasdasd
+echo $AWS_CREDS_DEV | base64 -D > ~/.aws/credentials
+brew install terraform
+brew install tfswitch
+brew install warrensbox/tap/tfswitch
+brew install kubectl
+brew install kubectx
+brew install kops
+brew install kubernetes-helm
+brew install helmfile
+helm plugin install https://github.com/databus23/helm-diff
+
+
+
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+:PluginInstall
+
+
+cd .vim/bundle/youcompleteme
+ ./install.py --all
+ https://vimawesome.com/?q=cat%3Ainterface
+
+https://github.com/vim-airline/vim-airline
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
