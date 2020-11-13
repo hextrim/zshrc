@@ -83,7 +83,7 @@ brew install kops
 brew install kubernetes-helm
 brew install helmfile
 helm plugin install https://github.com/databus23/helm-diff
-
+brew tap wallix/awless; brew install awless
 
 
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
