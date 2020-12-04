@@ -1,6 +1,8 @@
 " powerline
 set cursorcolumn 
 hi CursorColumn ctermbg=6
+" hi CursorLine ctermfg=7
+hi Cursor guifg=white guibg=black
 set cursorline
 set rtp+=/Users/lo3k/Library/Python/2.7/lib/python/site-packages/powerline/bindings/vim
 set laststatus=2
@@ -101,10 +103,11 @@ let g:ycm_key_list_previous_completion=[]
 map <C-n> :NERDTreeToggle<CR>
 " NERDTreeTabs
 let NERDTreeShowHidden=1
-let g:nerdtree_tabs_open_on_console_startup=1
+let g:nerdtree_tabs_open_on_console_startup=0
 map <Leader>n <plug>NERDTreeTabsToggle<CR>
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline_statusline_ontop=1
+let g:airline_statusline_ontop=0
 let g:airline_theme='base16_spacemacs'
+highlight Pmenu ctermfg=0 ctermbg=4 guifg=#85becc guibg=#85becc
