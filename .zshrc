@@ -201,3 +201,43 @@ autoload -U +X bashcompinit && bashcompinit
 complete -C '/usr/local/aws/bin/aws_completer' aws
 complete -o nospace -C /usr/local/bin/terraform terraform
 source /usr/local/share/zsh/site-functions/_awless
+
+# Function to switch AWS profiles
+awsprofile() {
+  if [[ -z "$1" ]]; then
+    echo "Usage: awsprofile <profile>"
+    return 1
+  fi
+  export AWS_PROFILE="$1"
+  echo "AWS_PROFILE set to $AWS_PROFILE"
+}
+
+# Completion function
+_aws_profiles() {
+  local profiles
+  profiles=($(grep '^\[profile ' ~/.aws/config | sed -E 's/^\[profile (.+)\]$/\1/'))
+  compadd "${profiles[@]}"
+}
+
+# Register completion for awsprofile
+compdef _aws_profiles awsprofile
+
+# Function to SSO login
+awssso() {
+  if [[ -z "$1" ]]; then
+    echo "Usage: awssso <sso-session>"
+    return 1
+  fi
+  echo "Logging in with SSO session: $1 ..."
+  aws sso login --sso-session "$1"
+}
+
+# Completion function for SSO sessions
+_aws_sso_sessions() {
+  local sessions
+  sessions=($(grep '^\[sso-session ' ~/.aws/config | sed -E 's/^\[sso-session (.+)\]$/\1/'))
+  compadd "${sessions[@]}"
+}
+
+# Register completion
+compdef _aws_sso_sessions awssso
